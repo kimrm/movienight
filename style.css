@@ -1,0 +1,334 @@
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  padding: 1rem;
+  margin: 0;
+}
+
+iframe {
+  display: block; /* iframes are inline by default */
+  background: #000;
+  border: none; /* Reset default border */
+  height: 350px; /* Viewport-relative units */
+  width: 80%;
+}
+
+header {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+nav {
+  display: none;
+  position: fixed;
+  top: 10px;
+  width: 400px;
+  height: 50vh;
+  background-color: rgb(184, 83, 83);
+  border-radius: 15px 0 0 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+nav ul li {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+nav ul li a {
+  font-family: "unbounded", sans-serif;
+  text-decoration: none;
+  color: rgb(255, 213, 213);
+}
+
+nav.displayed {
+  display: block;
+  animation: displayed 0.5s ease-in-out forwards;
+}
+
+@keyframes displayed {
+  from {
+    opacity: 0;
+    right: -100px;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+.hamburger-button {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  background-color: white;
+  opacity: 0.9;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  border-style: none;
+  width: 4rem;
+  height: 4rem;
+  margin: 2rem;
+  cursor: pointer;
+}
+
+.hamburger-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.hamburger {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.hamburger-line-1,
+.hamburger-line-2,
+.hamburger-line-3 {
+  height: 0.7rem;
+  background-color: #000;
+  padding: 0.2rem;
+}
+
+.hamburger-line-1,
+.hamburger-line-3 {
+  width: 100%;
+}
+
+.hamburger-line-2 {
+  width: 80%;
+}
+
+h1 {
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.5rem;
+}
+
+.pageDescription {
+  margin-bottom: 3rem;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.movieList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  --skew: 0deg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 0 15px;
+  padding: 2rem;
+  color: #000;
+  transform: skewY(var(--skew));
+  position: relative;
+  min-height: 650px;
+}
+
+.card a {
+  display: block;
+}
+
+.card a:hover {
+  --skew: 5deg;
+}
+
+.cardHover {
+  transition: all 0.5s ease-in-out;
+  transform: skewY(5deg);
+}
+
+.movie h2 {
+  font-size: 1.1rem;
+  font-family: "Unbounded", sans-serif;
+  max-width: 300px;
+  margin-top: 2rem;
+}
+
+.movie img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0 0 0 15px;
+}
+
+.readMore {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 15px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.readMore:hover {
+  background-color: rgb(112, 57, 57);
+  transition: all 0.5s ease-in-out;
+}
+
+.rating {
+  background-color: green;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 0 0 0 15px;
+}
+
+.loadingContainer {
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+.loadingContainer span {
+  color: rgb(127, 127, 127);
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid rgb(112, 57, 57); /* Blue */
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+  align-self: center;
+}
+
+.error {
+  background-color: rgb(212, 54, 54);
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.movieDetails {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.movieProperties {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  padding: 1rem 1rem 1rem 400px;
+  background-color: aliceblue;
+  margin: 0 1rem 0 1rem;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.moviePoster {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.movieDescription {
+  max-width: 600px;
+  line-height: 1.5rem;
+}
+
+.save-button {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+}
+
+/* 
+DO THIS ON ALL BUTTONS?
+prevent click on button content by removing pointer events on sub elements
+Ref: https://css-tricks.com/slightly-careful-sub-elements-clickable-things/
+*/
+.save-button > * {
+  pointer-events: none;
+}
+
+.save-button:hover {
+  color: rgb(1, 52, 1);
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
