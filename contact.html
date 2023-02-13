@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <title>IMDb Topp 100 List</title>
+    <script
+      src="https://kit.fontawesome.com/33714fa395.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Unbounded&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./js/index.js" type="module" defer></script>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <button class="hamburger-button">
+      <svg class="hamburger" viewBox="0 0 100 80">
+        <rect class="hamburger-line-1" rx="8"></rect>
+        <rect class="hamburger-line-2" y="30" rx="8"></rect>
+        <rect class="hamburger-line-3" y="60" rx="8"></rect>
+      </svg>
+    </button>
+    <header>
+      <span class="logo">MovieNight</span>
+      <p class="pageDescription">
+        The 100 most popular movies as determined by IMDb users.
+      </p>
+      <nav class="menu hidden">
+        <ul>
+          <li><a class="menu__link" href="index.html">Home</a></li>
+          <li><a class="menu__link" href="index.html">Saved movies</a></li>
+          <li><a class="menu__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="container">
+      <h1>Contact us</h1>
+      <div id="successMessage" class="contact-success"></div>
+      <div class="form-container">
+        <form action="" method="get" class="form">
+          <div class="form-control">
+            <label for="input_name">Your name</label>
+            <input
+              type="text"
+              name="input_name"
+              id="input_name"
+              placeholder="John Smith"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="input_email">Your e-mail</label>
+            <input
+              type="email"
+              name="input_email"
+              id="input_email"
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="input_address">Your address</label>
+            <input
+              type="text"
+              name="input_address"
+              id="input_address"
+              placeholder="Streetname 001, 0001 City"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="input_subject">Subject</label>
+            <input
+              type="text"
+              name="input_subject"
+              id="input_subject"
+              placeholder="Message regarding..."
+              required
+            />
+          </div>
+          <button class="form-button" id="submitButton">Submit</button>
+        </form>
+      </div>
+
+      <div class="contact-errors" id="errorsContainer">
+        <h2>Form did not pass validation</h2>
+        <ul></ul>
+      </div>
+    </section>
+  </body>
+</html>

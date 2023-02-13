@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Unbounded&display=swap"
       rel="stylesheet"
     />
-    <script src="./details.js" type="module" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <script src="./js/index.js" type="module" defer></script>
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
     <button class="hamburger-button">
@@ -26,15 +26,15 @@
         <rect class="hamburger-line-3" y="60" rx="8"></rect>
       </svg>
     </button>
-    <nav>
+    <nav class="menu hidden">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html">Saved movies</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a class="menu__link" href="index.html">Home</a></li>
+        <li><a class="menu__link" href="index.html">Saved movies</a></li>
+        <li><a class="menu__link" href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <header>
-      <h1>MOVIE NIGHT</h1>
+      <span class="logo">MovieNight</span>
       <p class="pageDescription">
         Helping you find the perfect movie for your next movie night.
       </p>
@@ -44,7 +44,7 @@
         <div class="loader"></div>
         <span>Loading movie details...</span>
       </div>
-      <div class="error hide"></div>
+      <div class="message-container"></div>
       <div class="movieDetails"></div>
     </div>
   </body>
