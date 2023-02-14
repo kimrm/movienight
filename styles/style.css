@@ -23,6 +23,15 @@ body {
   margin: 0;
 }
 
+a {
+  color: navy;
+  text-decoration: none;
+}
+
+a:visited {
+  color: navy;
+}
+
 h1,
 h2 {
   font-family: var(--heading-font);
@@ -227,6 +236,7 @@ header {
   min-height: 700px;
   max-width: 350px;
   margin-bottom: 1rem;
+  transition: all 500ms ease-out;
 }
 
 .card a.link::after {
@@ -238,26 +248,14 @@ header {
   content: " ";
 }
 
+.card:hover {
+  box-shadow: 0 0 40px navy;
+}
+
 .movie__image {
   width: 100%;
   height: 60%;
   object-fit: cover;
-}
-
-.readMore {
-  color: #000;
-  text-align: center;
-  padding: 0 1rem;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 0 0 15px 15px;
-  text-decoration: none;
-  width: 100%;
-}
-
-.readMore:hover {
-  background-color: rgb(112, 57, 57);
-  transition: all 0.5s ease-in-out;
 }
 
 .rating {
@@ -295,13 +293,24 @@ header {
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid rgb(112, 57, 57); /* Blue */
+  border: 16px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  background-color: #000000;
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  animation: spin 1s linear infinite;
+  animation: spin 0.5s linear infinite;
   align-self: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error {
@@ -316,15 +325,6 @@ header {
 
 .hide {
   display: none;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes spin180 {
@@ -384,8 +384,9 @@ header {
   display: block;
   background: #000;
   border: none;
-  height: 350px;
+  height: 200px;
   width: 100%;
+  max-width: 1000px;
 }
 
 .save-button {
@@ -472,14 +473,36 @@ header {
   display: block;
 }
 
+.controllers {
+  padding: 1rem 0;
+}
+
+.genre-select {
+  padding: 0.2rem 1rem;
+  background-color: transparent;
+  border: solid 1px #bbbbbb;
+  border-radius: 5px;
+}
+
+.genre-select-button {
+  padding: 0.2rem 1rem;
+  background-color: green;
+  color: #fff;
+  border: solid 1px #bbbbbb;
+  border-radius: 5px;
+}
+
 @media screen and (min-width: 768px) {
   .movieProperties {
     padding: 1rem 1rem 1rem 400px;
+    min-height: 620px;
   }
   .moviePoster {
     position: absolute;
   }
-
+  .youtube {
+    height: 350px;
+  }
   h1 {
     font-size: 3rem;
   }

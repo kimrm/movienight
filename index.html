@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find movie suggestions from the IMDb Top List"
+    />
     <title>IMDb Topp 100 List</title>
     <script
       src="https://kit.fontawesome.com/33714fa395.js"
@@ -27,7 +31,7 @@
           <rect class="hamburger-line-3" y="60" rx="8"></rect>
         </svg>
       </button>
-      <span class="logo">MovieNight</span>
+      <span class="logo" aria-role="heading" level="1">MovieNight</span>
       <p class="pageDescription">
         The 100 most popular movies as determined by IMDb users.
       </p>
@@ -40,7 +44,14 @@
       </nav>
     </header>
     <section class="container">
-      <h1>IMDb Top 100 movie list</h1>
+      <div class="controllers">
+        <select name="genre" id="genreSelect" class="genre-select">
+          <option value="All">All genres</option>
+        </select>
+        <button id="surpriseMeButton" class="genre-select-button">
+          Pick me a movie!
+        </button>
+      </div>
       <div class="loadingContainer">
         <div class="loader"></div>
         <p>Loading movies</p>
