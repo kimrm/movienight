@@ -2,7 +2,7 @@
   --heading-font: "Unbounded", sans-serif;
   --body-font: "Open Sans", sans-serif;
   --page-boundary: 1400px;
-  --primary-color: rgb(199, 16, 190);
+  --primary-color: rgb(11, 108, 71);
   --primary-color-dark: rgb(18, 1, 17);
   --background-color: aliceblue;
 }
@@ -127,10 +127,11 @@ header {
   font-weight: 700;
 }
 
-.menu__link {
+.menu__link,
+.menu__link:visited {
   font-family: var(--heading-font);
   text-decoration: none;
-  color: var(--primary-color-dark);
+  color: #fff;
 }
 
 .menu__link:hover {
@@ -237,6 +238,7 @@ header {
   max-width: 350px;
   margin-bottom: 1rem;
   transition: all 500ms ease-out;
+  padding-bottom: 1rem;
 }
 
 .card a.link::after {
@@ -249,13 +251,21 @@ header {
 }
 
 .card:hover {
-  box-shadow: 0 0 40px navy;
+  box-shadow: 0 0 40px #fff;
+  background-color: #fff;
+}
+
+.card:hover > .movie__image {
+  transform: scale(101%);
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .movie__image {
   width: 100%;
   height: 60%;
   object-fit: cover;
+  transition: all 200ms ease-in-out;
 }
 
 .rating {
@@ -360,7 +370,6 @@ header {
   top: 1.5rem;
   left: 0;
   padding: 1rem;
-  margin: 0 1rem 0 1rem;
   border-radius: 10px;
   width: 100%;
 }
@@ -478,14 +487,14 @@ header {
 }
 
 .genre-select {
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: transparent;
   border: solid 1px #bbbbbb;
   border-radius: 5px;
 }
 
 .genre-select-button {
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: green;
   color: #fff;
   border: solid 1px #bbbbbb;
@@ -494,6 +503,7 @@ header {
 
 @media screen and (min-width: 768px) {
   .movieProperties {
+    margin: 0 1rem 0 1rem;
     padding: 1rem 1rem 1rem 400px;
     min-height: 620px;
   }

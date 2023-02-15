@@ -4,9 +4,6 @@ import detailsPage from "./pages/detailsPage.js";
 import indexPage from "./pages/indexPage.js";
 import contactPage from "./pages/contactPage.js";
 
-// TODO:
-// Make design responsive
-
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
