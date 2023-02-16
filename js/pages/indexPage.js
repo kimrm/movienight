@@ -1,4 +1,4 @@
-import { options, RAPID_LIST_URL } from "../config.js";
+import { options, IMDB_API_URL } from "../config.js";
 import { showError, toggleLoader } from "../lib.js";
 import movieCard from "../components/movieCard.js";
 
@@ -7,7 +7,7 @@ export default function indexPage() {
 }
 
 function listMovies() {
-  fetch(RAPID_LIST_URL, options)
+  fetch(IMDB_API_URL, options)
     .then((response) => response.json())
     .then((data) => {
       handleMovieListData(data);

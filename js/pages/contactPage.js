@@ -37,10 +37,14 @@ function createEvents() {
     let errorList = [];
 
     if (!name.value) {
+      const errorMsg = document.querySelector(".validate-error.name");
+      errorMsg.textContent = "*Name is required";
       errorList.push("Name is required.");
     }
 
     if (!validateEmail(email.value)) {
+      const errorMsg = document.querySelector(".validate-error.email");
+      errorMsg.textContent = "*Valid e-mail address is required";
       errorList.push("E-mail is required");
     }
 

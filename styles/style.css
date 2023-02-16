@@ -419,7 +419,6 @@ header {
 .form {
   display: flex;
   flex-direction: column;
-  width: 50%;
   gap: 1rem;
 }
 
@@ -478,6 +477,11 @@ header {
   color: #fff;
 }
 
+.validate-error {
+  color: red;
+  font-weight: 900;
+}
+
 .show {
   display: block;
 }
@@ -516,7 +520,9 @@ header {
   h1 {
     font-size: 3rem;
   }
-
+  .form {
+    width: 50%;
+  }
   .logo {
     font-size: 2.5rem;
   }

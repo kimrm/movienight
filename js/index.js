@@ -1,4 +1,3 @@
-import { options, RAPID_LIST_URL, RAPID_DETAILS_URL } from "./config.js";
 import { setMenuEvents } from "./lib.js";
 import detailsPage from "./pages/detailsPage.js";
 import indexPage from "./pages/indexPage.js";
