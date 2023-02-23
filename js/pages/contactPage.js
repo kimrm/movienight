@@ -1,73 +1,123 @@
 import { validateEmail } from "../lib.js";
+import contactMessage from "../components/contactMessage.js";
 
 export default function contactPage() {
   createEvents();
 }
 
 function createEvents() {
-  const submitButton = document.querySelector("#submitButton");
+  const contactForm = document.querySelector("#contactForm");
   const inputs = document.querySelectorAll(".form-control input");
 
-  inputs.forEach((control) => {
-    control.addEventListener("focus", (e) => {
-      e.target.labels.forEach((label) => {
+  inputs.forEach((input) => {
+    input.addEventListener("focus", (event) => {
+      event.target.labels.forEach((label) => {
         label.classList.toggle("focus");
       });
     });
-    control.addEventListener("blur", (e) => {
-      e.target.labels.forEach((label) => {
+    input.addEventListener("blur", (event) => {
+      event.target.labels.forEach((label) => {
         label.classList.toggle("focus");
       });
+      switch (event.target.name) {
+        case "input_name":
+          const nameErrorMsg = document.querySelector(".validate-error.name");
+          if (event.target.value === "") {
+            nameErrorMsg.textContent = "*Name is required";
+          } else {
+            nameErrorMsg.textContent = "";
+          }
+          break;
+        case "input_email":
+          const emailErrorMsg = document.querySelector(".validate-error.email");
+          if (event.target.value !== "" && !validateEmail(event.target.value)) {
+            emailErrorMsg.textContent = "*A valid e-mail address is required";
+          } else {
+            emailErrorMsg.textContent = "";
+          }
+          break;
+        case "input_subject":
+          const subjectErrorMsg = document.querySelector(
+            ".validate-error.subject"
+          );
+          if (event.target.value !== "" && event.target.value.length < 10) {
+            subjectErrorMsg.textContent =
+              "*Subject must be minimum 10 characters";
+          } else {
+            subjectErrorMsg.textContent = "";
+          }
+          break;
+        case "input_address":
+          const addressErrorMsg = document.querySelector(
+            ".validate-error.address"
+          );
+          if (event.target.value !== "" && event.target.value.length < 25) {
+            addressErrorMsg.textContent =
+              "*Address must be minimum 25 characters";
+          } else {
+            addressErrorMsg.textContent = "";
+          }
+      }
     });
   });
 
-  submitButton.onclick = function (e) {
-    e.preventDefault();
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
     const name = document.querySelector("#input_name");
     const email = document.querySelector("#input_email");
     const address = document.querySelector("#input_address");
     const subject = document.querySelector("#input_subject");
-    const errorsContainer = document.querySelector("#errorsContainer");
-    const successContainer = document.querySelector("#successMessage");
+    const messageContainer = document.querySelector("#message");
 
-    errorsContainer.classList.remove("show");
-    successContainer.classList.remove("show");
+    const nameErrorMsg = document.querySelector(".validate-error.name");
+    const emailErrorMsg = document.querySelector(".validate-error.email");
+    const subjectErrorMsg = document.querySelector(".validate-error.subject");
+    const addressErrorMsg = document.querySelector(".validate-error.address");
 
-    let errorList = [];
+    document.querySelectorAll(".validate-error").forEach((element) => {
+      element.textContent = "";
+    });
+
+    let hasErrors = false;
 
     if (!name.value) {
-      const errorMsg = document.querySelector(".validate-error.name");
-      errorMsg.textContent = "*Name is required";
-      errorList.push("Name is required.");
+      nameErrorMsg.textContent = "*Name is required";
+      hasErrors = true;
     }
 
     if (!validateEmail(email.value)) {
-      const errorMsg = document.querySelector(".validate-error.email");
-      errorMsg.textContent = "*Valid e-mail address is required";
-      errorList.push("E-mail is required");
+      emailErrorMsg.textContent = "*A valid e-mail address is required";
+      hasErrors = true;
     }
 
     if (subject.value.length < 10) {
-      errorList.push("Subject must be at least 10 letters.");
+      subjectErrorMsg.textContent = "*Subject must be minimum 10 characters";
+      hasErrors = true;
     }
 
     if (address.value.length < 25) {
-      errorList.push("Address must be at least 25 letters.");
+      addressErrorMsg.textContent = "*Address must be minimum 25 characters";
+      hasErrors = true;
     }
 
-    if (errorList.length) {
-      const errorsList = document.querySelector("#errorsContainer ul");
-      errorsList.innerHTML = "";
-      errorList.forEach((error) => {
-        errorsList.innerHTML += `
-            <li>${error}</li>
-            `;
-      });
-      errorsContainer.classList.add("show");
-    } else {
-      successContainer.innerHTML = `Thank you for your message, ${name.value}!`;
-      successContainer.classList.add("show");
+    if (!messageContainer.classList.contains("show")) {
+      messageContainer.classList.add("show");
     }
-  };
+
+    if (hasErrors) {
+      messageContainer.innerHTML = contactMessage(
+        "error",
+        "Couldn't send your message. Please check for errors in the form."
+      );
+    } else {
+      messageContainer.innerHTML = contactMessage(
+        "success",
+        "Your message has been sent."
+      );
+      document.querySelectorAll(".form-control input").forEach((input) => {
+        input.value = "";
+      });
+    }
+  });
 }

@@ -28,7 +28,7 @@
       </svg>
     </button>
     <header>
-      <span class="logo">MovieNight</span>
+      <a href="/" class="logo" title="Navigate home"></a>
       <p class="pageDescription">
         The 100 most popular movies as determined by IMDb users.
       </p>
@@ -41,13 +41,13 @@
       </nav>
     </header>
     <section class="container">
-      <h1>Contact us</h1>
-      <div id="successMessage" class="contact-success"></div>
+      <h1>Let's have a chat!</h1>
+      <div id="message" class="contact-message"></div>
       <div class="form-container">
-        <form action="" method="get" class="form">
+        <form action="" method="get" class="form" id="contactForm">
           <div class="form-control">
             <label for="input_name"
-              >Your name <span class="validate-error name"></span
+              >Your name<span class="validate-error name"></span
             ></label>
             <input
               type="text"
@@ -95,11 +95,6 @@
           </div>
           <button class="form-button" id="submitButton">Submit</button>
         </form>
-      </div>
-
-      <div class="contact-errors" id="errorsContainer">
-        <h2>Form did not pass validation</h2>
-        <ul></ul>
       </div>
     </section>
   </body>

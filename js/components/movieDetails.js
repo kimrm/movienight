@@ -4,16 +4,16 @@ export default (movie) => {
   // URI encode the JSON stringified movie object to store it in the data attribute
   // Ref: https://stackoverflow.com/questions/8542746/store-json-object-in-data-attribute-in-html-jquery
 
+  const movieData = encodeURIComponent(JSON.stringify(movie));
+
   return `
         <img id="poster" class="moviePoster" src="${movie.image}" alt="${
     movie.title
   }">
         <div class="movieProperties">
-          <h1>${movie.title}</h1>
+          <h1>${movie.title}</h1>          
           <div>
-            <button class="save-button" data-movie="${encodeURIComponent(
-              JSON.stringify(movie)
-            )}">
+            <button class="save-button" data-movie="${movieData}">
               <i class="${
                 favMovies().find((favMovie) => favMovie.imdbid === movie.imdbid)
                   ? "fa-solid"

@@ -1,6 +1,6 @@
 import { options, IMDB_API_URL } from "../config.js";
 import { showError, toggleLoader } from "../lib.js";
-import movieInformation from "../components/movieInformation.js";
+import movieDetails from "../components/movieDetails.js";
 
 export default function detailsPage(id) {
   displayMovie(id);
@@ -15,11 +15,11 @@ export function displayMovie(movieId) {
 }
 
 export function handleMovieDetailsData(data) {
-  const movieDetails = document.querySelector(".movieDetails");
+  const detailsDivElement = document.querySelector(".movieDetails");
   const item = document.createElement("div");
   document.title = data.title;
-  item.innerHTML = movieInformation(data); // bad name
-  movieDetails.appendChild(item);
+  item.innerHTML = movieDetails(data);
+  detailsDivElement.appendChild(item);
   toggleLoader();
 }
 

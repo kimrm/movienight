@@ -8,3 +8,4 @@ export const options = {
     "X-RapidAPI-Host": "imdb-top-100-movies.p.rapidapi.com",
   },
 };
+export const PAGE_TITLE = "Movie List";

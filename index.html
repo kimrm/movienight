@@ -31,7 +31,13 @@
           <rect class="hamburger-line-3" y="60" rx="8"></rect>
         </svg>
       </button>
-      <span class="logo" aria-role="heading" level="1">MovieNight</span>
+      <a
+        href="/"
+        class="logo"
+        aria-role="heading"
+        level="1"
+        title="Navigate home"
+      ></a>
       <p class="pageDescription">
         The 100 most popular movies as determined by IMDb users.
       </p>
@@ -58,13 +64,13 @@
         </ul>
       </nav>
     </header>
-    <section class="container">
+    <main class="container">
       <div class="controllers">
         <select name="genre" id="genreSelect" class="genre-select">
           <option value="All">All genres</option>
         </select>
         <button id="surpriseMeButton" class="genre-select-button">
-          Pick me a movie!
+          Pick a movie for me!
         </button>
       </div>
       <div class="loadingContainer">
@@ -74,6 +80,6 @@
 
       <div class="message-container"></div>
       <ul class="movieList"></ul>
-    </section>
+    </main>
   </body>
 </html>
