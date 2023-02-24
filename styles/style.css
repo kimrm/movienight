@@ -1,14 +1,18 @@
 :root {
   --heading-font: "Unbounded", sans-serif;
+  --logo-font: "Bree Serif", serif;
   --body-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --page-boundary: 1400px;
-  --primary-color: #cb6a31;
+  --page-boundary: 1200px;
+  --primary-color: #7e8092;
+  --primary-color-darker: #c85816;
   --primary-color-dark: rgb(18, 1, 17);
-  --primary-button-color: #211523;
-  --text-subtle: #8b8b8b;
-  --background-color: aliceblue;
+  --primary-button-color: #e8537b;
+  --primary-button-color-darker: #4b1a27;
+  --dark-shade: #2f2541;
+  --text-subtle: #656565;
+  --background-color: #e2ebee;
 }
 
 *,
@@ -18,11 +22,13 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--body-font);
-  padding: 1rem;
   height: 100%;
   margin: 0;
 }
@@ -37,11 +43,11 @@ a:visited {
 }
 
 a.logo {
-  font-family: var(--heading-font);
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-family: var(--logo-font);
+  font-size: 3rem;
   font-weight: 900;
+  color: var(--dark-shade);
   margin-bottom: 1rem;
-  color: var(--primary-color);
 }
 
 h1 {
@@ -78,6 +84,7 @@ header {
   max-width: var(--page-boundary);
   margin: 0 auto;
   position: relative;
+  padding: 0 1rem;
 }
 
 .menu {
@@ -224,13 +231,16 @@ header {
 .container {
   max-width: var(--page-boundary);
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .movieList {
-  display: flex;
+  display: block;
   background-color: var(--background-color);
-  flex-wrap: wrap;
+  border-radius: 5px;
+  padding: 1rem;
   gap: 2rem;
+  margin: 0 -1rem;
 }
 
 .card {
@@ -238,13 +248,12 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(234, 234, 234);
+  background-color: #faf5f6;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 0 0 15px 15px;
   color: #000;
   position: relative;
-  min-height: 720px;
-  max-width: 350px;
+  min-height: 600px;
   margin-bottom: 1rem;
   transition: all 500ms ease-out;
   padding-bottom: 1rem;
@@ -257,6 +266,10 @@ header {
   right: 0;
   bottom: 0;
   content: " ";
+}
+
+.card .link span {
+  visibility: hidden;
 }
 
 .card:hover {
@@ -278,7 +291,7 @@ header {
 }
 
 .rating {
-  background-color: green;
+  background-color: var(--dark-shade);
   padding: 0.5rem;
   border-radius: 50%;
   color: #fff;
@@ -295,7 +308,7 @@ header {
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
   font-weight: 700;
-  border-radius: 0 0 0 15px;
+  border-radius: 0 0 25px 0;
 }
 
 .loadingContainer {
@@ -402,15 +415,16 @@ header {
   display: block;
   background: #000;
   border: none;
-  height: 200px;
+  height: 250px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .save-button {
   border: none;
   background-color: transparent;
-  color: green;
+  color: var(--primary-button-color);
   cursor: pointer;
 }
 
@@ -515,36 +529,63 @@ header {
 }
 
 .controllers {
-  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
 }
 
 .genre-select {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   background-color: transparent;
-  border: solid 1px #bbbbbb;
-  border-radius: 5px;
+  border: solid 1px var(--primary-button-color);
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
 }
 
 .genre-select-button {
   padding: 0.5rem 1rem;
   background-color: var(--primary-button-color);
   color: #fff;
-  border: solid 1px #bbbbbb;
-  border-radius: 5px;
+  border: solid 1px var(--primary-button-color);
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.genre-select-button:hover {
+  background-color: var(--primary-button-color-darker);
+}
+
+@media screen and (min-width: 1400px) {
+  .hamburger-button {
+    right: 5vw;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .movieList {
+    margin: 0 -0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .card {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .movieProperties {
     margin: 0 1rem 0 1rem;
-    padding: 1rem 1rem 1rem 400px;
+    padding: 1rem 1rem 1rem 425px;
     min-height: 620px;
   }
   .moviePoster {
     position: absolute;
   }
   .youtube {
-    height: 350px;
+    height: 450px;
   }
   /* h1 {
     font-size: 3rem;

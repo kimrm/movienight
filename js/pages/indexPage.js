@@ -1,6 +1,7 @@
 import { options, IMDB_API_URL } from "../config.js";
 import { showError, toggleLoader } from "../lib.js";
 import movieCard from "../components/movieCard.js";
+import { favMovies } from "../components/savedMovies.js";
 
 export default function indexPage() {
   listMovies();
@@ -22,20 +23,28 @@ function handleMovieListData(data) {
   let genreList = [];
 
   pickRandomMovieButton.addEventListener("click", () => {
+    // make as function?
+
     const selectedGenre = genreFormSelectElement.value;
     const filteredArray =
       selectedGenre === "All"
         ? data
         : data.filter((item) => item.genre.includes(selectedGenre));
-    const randomId = Math.floor(Math.random() * filteredArray.length);
-    const randomMovie = filteredArray[randomId];
+
+    // check imdbid
+    const selectableMovies = filteredArray.filter(
+      (item) => !favMovies().includes(item)
+    );
+
+    const randomId = Math.floor(Math.random() * selectableMovies.length);
+    const randomMovie = selectableMovies[randomId];
     window.location.href = `/details.html?id=${randomMovie.id}`;
   });
 
   // writes out the movies
   data.forEach((movie) => {
     const item = document.createElement("li");
-    item.innerHTML = movieCard(movie);
+    item.appendChild(movieCard(movie));
     moviesUlElement.appendChild(item);
   });
 
