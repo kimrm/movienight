@@ -4,18 +4,18 @@
   --body-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --page-boundary: 1200px;
-  --primary-color: #7e8092;
+  --page-boundary: 1400px;
+  --primary-color: #7a88c0;
   --primary-color-darker: #c85816;
-  --primary-color-dark: rgb(18, 1, 17);
-  --primary-button-color: #7a6f80;
-  --primary-button-color-darker: #8f8983;
+  --primary-color-dark: #51a4df;
+  --primary-button-color: #7a88c0;
+  --primary-button-color-darker: #1752c6;
   --menu-link: #e9e0fb;
   --menu-link-hover: #7f798a;
-  --dark-shade: #2f2541;
+  --dark-shade: #51a4df;
   --text-subtle: #454444;
   --background-color: #e2ebee;
-  --background-color-darker: #b4c7ce;
+  --background-color-darker: #d4dcdf;
 }
 
 *,
@@ -260,11 +260,13 @@ header {
   border-radius: 5px;
   padding: 1rem;
   margin: 0 -1rem;
+  min-height: 100vh;
 }
 
 .movieList {
   display: block;
   gap: 1rem;
+  height: 100%;
 }
 
 .card {
@@ -569,37 +571,39 @@ header {
 
 .tabs {
   display: flex;
-  padding: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .tab-top-list,
 .tab-saved-list {
   font-size: 1rem;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   color: var(--dark-shade);
   border: none;
-  border-radius: 10px;
   cursor: pointer;
   appearance: none;
   background-color: var(--background-color-darker);
-  box-shadow: rgba(64, 64, 64, 0.5) 0 0 4px;
+  box-shadow: #5e5e5e6a 0 0 20px;
 }
 
 .tab-top-list {
-  border-radius: 10px 0 0 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 .tab-saved-list {
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 .tabs button.inactive {
+  font-weight: 400;
+  color: #555555;
   background-color: transparent;
-  box-shadow: inset 0 0 2px rgba(165, 165, 165, 0.5);
+  box-shadow: inset 0 0 20px rgba(165, 165, 165, 0.188);
 }
 
 .tabs button:hover {
-  color: #8f8983;
+  text-shadow: var(--background-color-darker) 0 0 40px;
 }
 
 .genre-select-controller {
