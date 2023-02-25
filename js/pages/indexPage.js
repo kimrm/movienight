@@ -8,9 +8,13 @@ export default function indexPage() {
   const tabSavedList = document.querySelector("#tabSavedList");
   const tabTopList = document.querySelector("#tabTopList");
   tabSavedList.addEventListener("click", (event) => {
+    tabSavedList.classList.toggle("inactive");
+    tabTopList.classList.toggle("inactive");
     listSavedMovies();
   });
   tabTopList.addEventListener("click", (event) => {
+    tabSavedList.classList.toggle("inactive");
+    tabTopList.classList.toggle("inactive");
     listMovies();
   });
 }

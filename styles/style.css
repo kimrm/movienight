@@ -599,7 +599,7 @@ header {
 }
 
 .tabs button:hover {
-  background-color: var(--primary-button-color-darker);
+  color: #8f8983;
 }
 
 .genre-select-controller {
