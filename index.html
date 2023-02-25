@@ -66,12 +66,6 @@
     </header>
     <main class="container">
       <div class="controllers">
-        <div class="tabs">
-          <button id="tabTopList" class="tab-top-list">Top List</button>
-          <button id="tabSavedList" class="tab-saved-list inactive">
-            Saved movies
-          </button>
-        </div>
         <div class="genre-select-controller">
           <select name="genre" id="genreSelect" class="genre-select">
             <option value="All">All genres</option>
@@ -87,7 +81,15 @@
       </div>
 
       <div class="message-container"></div>
-      <ul class="movieList"></ul>
+      <div class="movieList-container">
+        <div class="tabs">
+          <button id="tabTopList" class="tab-top-list">Top List</button>
+          <button id="tabSavedList" class="tab-saved-list inactive">
+            Saved movies
+          </button>
+        </div>
+        <ul class="movieList"></ul>
+      </div>
     </main>
   </body>
 </html>
