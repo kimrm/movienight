@@ -8,10 +8,12 @@
   --primary-color: #7e8092;
   --primary-color-darker: #c85816;
   --primary-color-dark: rgb(18, 1, 17);
-  --primary-button-color: #e8537b;
-  --primary-button-color-darker: #4b1a27;
+  --primary-button-color: #7a6f80;
+  --primary-button-color-darker: #8f8983;
+  --menu-link: #e9e0fb;
+  --menu-link-hover: #7f798a;
   --dark-shade: #2f2541;
-  --text-subtle: #656565;
+  --text-subtle: #454444;
   --background-color: #e2ebee;
 }
 
@@ -31,6 +33,15 @@ body {
   font-family: var(--body-font);
   height: 100%;
   margin: 0;
+}
+
+.footer {
+  width: 100%;
+  opacity: 0.9;
+  bottom: 0;
+  background-color: #faf5f6;
+  padding: 1rem;
+  margin-top: 2rem;
 }
 
 a {
@@ -68,6 +79,14 @@ p {
   margin: 1rem 0;
 }
 
+.subtle-text {
+  color: var(--text-subtle);
+}
+
+.regular-text {
+  color: #000;
+}
+
 .movie h2 {
   text-align: center;
 }
@@ -94,7 +113,7 @@ header {
   right: -100px;
   width: 0;
   height: 50vh;
-  background-color: var(--primary-color);
+  background-color: var(--dark-shade);
   border-radius: 15px 0 0 15px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   overflow-x: hidden;
@@ -146,14 +165,15 @@ header {
 .menu__link:visited {
   font-family: var(--heading-font);
   text-decoration: none;
-  color: #fff;
+  color: var(--menu-link);
 }
 
 .menu__link:hover {
-  color: rgb(37, 31, 31);
+  color: var(--menu-link-hover);
 }
 
 .hamburger-button {
+  display: none;
   position: fixed;
   z-index: 3;
   right: 0;
@@ -239,7 +259,7 @@ header {
   background-color: var(--background-color);
   border-radius: 5px;
   padding: 1rem;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0 -1rem;
 }
 
@@ -462,12 +482,14 @@ header {
   font-weight: 900;
 }
 
-.focus ~ input {
+.focus ~ input,
+.focus ~ textarea {
   outline: none !important;
   box-shadow: 0 0 20px rgba(148, 148, 148, 0.5);
 }
 
-.form-control input {
+.form-control input,
+.form-control textarea {
   padding: 0.5rem;
   border-radius: 10px;
   border: solid #7b7b7b 0.1px;
@@ -476,6 +498,7 @@ header {
 
 .form-button {
   padding: 0.5rem 1.5rem;
+  font-size: 1rem;
   display: inline;
   width: fit-content;
   background-color: var(--primary-button-color);
@@ -483,6 +506,11 @@ header {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  appearance: none;
+}
+
+.form-button:hover {
+  background-color: var(--primary-button-color-darker);
 }
 
 .contact-errors {
@@ -530,16 +558,61 @@ header {
 
 .controllers {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
 }
 
+.tabs {
+  display: flex;
+}
+
+.tab-top-list,
+.tab-saved-list {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--primary-button-color);
+}
+
+.tab-top-list {
+  border-radius: 10px 0 0 10px;
+}
+
+.tab-saved-list {
+  border-radius: 0 10px 10px 0;
+}
+
+.tabs button.inactive {
+  background-color: var(--primary-button-color-darker);
+}
+
+.tabs button:hover {
+  background-color: var(--primary-button-color-darker);
+}
+
+.genre-select-controller {
+  display: flex;
+  align-items: center;
+}
+
 .genre-select {
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  font-size: 1rem;
   background-color: transparent;
   border: solid 1px var(--primary-button-color);
   border-right: 0;
   border-radius: 5px 0 0 5px;
+  appearance: none;
+  background-color: transparent;
+  background-image: url(../images/chevron-down-solid.svg);
+  background-repeat: no-repeat;
+  background-position: bottom 0.5rem right 0.5rem;
+  background-size: 1rem;
 }
 
 .genre-select-button {

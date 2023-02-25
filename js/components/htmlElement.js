@@ -32,6 +32,11 @@ HtmlElement.prototype.appendChild = function (child) {
   return this;
 };
 
+HtmlElement.prototype.appendChildren = function (...children) {
+  children.forEach((child) => this.element.appendChild(child));
+  return this;
+};
+
 HtmlElement.prototype.setEventListener = function (type, callback) {
   this.element.addEventListener(type, callback);
   return this;

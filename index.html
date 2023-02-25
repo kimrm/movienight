@@ -66,14 +66,22 @@
     </header>
     <main class="container">
       <div class="controllers">
-        <select name="genre" id="genreSelect" class="genre-select">
-          <option value="All">All genres</option>
-        </select>
-        <button id="surpriseMeButton" class="genre-select-button">
-          Movie suggestion!
-        </button>
+        <div class="tabs">
+          <button id="tabTopList" class="tab-top-list">Top List</button>
+          <button id="tabSavedList" class="tab-saved-list inactive">
+            Saved movies
+          </button>
+        </div>
+        <div class="genre-select-controller">
+          <select name="genre" id="genreSelect" class="genre-select">
+            <option value="All">All genres</option>
+          </select>
+          <button id="surpriseMeButton" class="genre-select-button">
+            Find movie!
+          </button>
+        </div>
       </div>
-      <div class="loadingContainer">
+      <div class="loadingContainer hide">
         <div class="loader"></div>
         <p>Loading movies</p>
       </div>

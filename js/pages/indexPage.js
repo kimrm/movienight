@@ -5,9 +5,30 @@ import { favMovies } from "../components/savedMovies.js";
 
 export default function indexPage() {
   listMovies();
+  const tabSavedList = document.querySelector("#tabSavedList");
+  const tabTopList = document.querySelector("#tabTopList");
+  tabSavedList.addEventListener("click", (event) => {
+    listSavedMovies();
+  });
+  tabTopList.addEventListener("click", (event) => {
+    listMovies();
+  });
+}
+
+function listSavedMovies() {
+  const moviesUlElement = document.querySelector(".movieList");
+  moviesUlElement.innerHTML = "";
+  favMovies().forEach((movie) => {
+    const item = document.createElement("li");
+    item.appendChild(movieCard(movie));
+    moviesUlElement.appendChild(item);
+  });
 }
 
 function listMovies() {
+  toggleLoader();
+  const moviesUlElement = document.querySelector(".movieList");
+  moviesUlElement.innerHTML = "";
   fetch(IMDB_API_URL, options)
     .then((response) => response.json())
     .then((data) => {
@@ -31,13 +52,9 @@ function handleMovieListData(data) {
         ? data
         : data.filter((item) => item.genre.includes(selectedGenre));
 
-    // check imdbid
-    const selectableMovies = filteredArray.filter(
-      (item) => !favMovies().includes(item)
-    );
+    const randomId = Math.floor(Math.random() * filteredArray.length);
+    const randomMovie = filteredArray[randomId];
 
-    const randomId = Math.floor(Math.random() * selectableMovies.length);
-    const randomMovie = selectableMovies[randomId];
     window.location.href = `/details.html?id=${randomMovie.id}`;
   });
 

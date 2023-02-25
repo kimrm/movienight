@@ -85,15 +85,18 @@
             <label for="input_subject"
               >Subject <span class="validate-error subject"></span
             ></label>
-            <input
-              type="text"
+            <textarea
               name="input_subject"
               id="input_subject"
+              cols="30"
+              rows="10"
               placeholder="Message regarding..."
               required
-            />
+            ></textarea>
           </div>
-          <button class="form-button" id="submitButton">Submit</button>
+          <button class="form-button" id="submitButton">
+            <i class="fa-solid fa-envelope"></i> Submit
+          </button>
         </form>
       </div>
     </section>

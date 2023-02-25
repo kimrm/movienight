@@ -1,4 +1,4 @@
-import { favMovies } from "./savedMovies.js";
+import { favMovies, saveToList } from "./savedMovies.js";
 import HtmlElement from "./htmlElement.js";
 
 // This function is used to create the movie details html using method chaining
@@ -23,19 +23,13 @@ export default function Movie(movie) {
       ? "In your list"
       : "Save to your list"
   );
-  /* uriDecode the stringified movie object to get the object back from the data attribute
-  Ref: https://stackoverflow.com/questions/8542746/store-json-object-in-data-attribute-in-html-jquery
-  */
+
   const saveButton = new HtmlElement("button")
     .setClasses("save-button")
     .appendChild(fontAwesomeI.element)
     .appendChild(buttonTextSpan.element)
-    .setDataset("movie", encodeURIComponent(JSON.stringify(movie))) // maybe dont need this anymore?
     .setEventListener("click", (event) => {
-      const movieObj = JSON.parse(
-        decodeURIComponent(event.target.dataset.movie)
-      );
-      saveToWatchList(movieObj);
+      saveToList(movie);
       const fontAwesome = event.target.children[0];
       const buttonText = event.target.children[1];
       fontAwesome.classList.toggle("fa-regular");
@@ -50,38 +44,65 @@ export default function Movie(movie) {
     .setText(movie.rating)
     .setClasses("rating");
   const ratingP = new HtmlElement("p")
-    .setText("IMDb rating: ")
+    .setClasses("subtle-text")
+    .setText("Rating ")
     .appendChild(ratingSpan.element);
-  const yearP = new HtmlElement("p").setText(`Year: ${movie.year}`);
+  const yearSpan = new HtmlElement("span")
+    .setClasses("regular-text")
+    .setText(movie.year);
+  const yearP = new HtmlElement("p")
+    .setClasses("subtle-text")
+    .setText("Year ")
+    .appendChild(yearSpan.element);
+  const genreSpan = new HtmlElement("span")
+    .setClasses("regular-text")
+    .setText(movie.genre.join(", "));
   const genreP = new HtmlElement("p")
-    .setClasses("movieDescription")
-    .setText(`Genre: ${movie.genre.join(", ")}`);
+    .setClasses("movieDescription", "subtle-text")
+    .setText("Genre ")
+    .appendChild(genreSpan.element);
+  const directorSpan = new HtmlElement("span")
+    .setClasses("regular-text")
+    .setText(movie.director.join(", "));
   const directorP = new HtmlElement("p")
-    .setClasses("movieDescription")
-    .setText(`Director: ${movie.director.join(", ")}`);
+    .setClasses("movieDescription", "subtle-text")
+    .setText("Director ")
+    .appendChild(directorSpan.element);
+  const writerSpan = new HtmlElement("span")
+    .setClasses("regular-text")
+    .setText(movie.writers.join(", "));
   const writerP = new HtmlElement("p")
-    .setClasses("movieDescription")
-    .setText(`Writer: ${movie.writers.join(", ")}`);
-  const imdbIdP = new HtmlElement("p").setText(`imbdId: ${movie.imdbid}`);
+    .setClasses("movieDescription", "subtle-text")
+    .setText("Writer ")
+    .appendChild(writerSpan.element);
+  const imbdIdSpan = new HtmlElement("span")
+    .setClasses("regular-text")
+    .setText(movie.imdbid);
+  const imdbIdP = new HtmlElement("p")
+    .setClasses("subtle-text")
+    .setText("imbdId ")
+    .appendChild(imbdIdSpan.element);
   const youtubeIframe = new HtmlElement("iframe")
     .setSrc(movie.trailer)
     .setClasses("youtube");
 
-  moviePropertiesDiv
-    .appendChild(movieH1.element)
-    .appendChild(saveButton.element)
-    .appendChild(movieDescriptionP.element)
-    .appendChild(ratingP.element)
-    .appendChild(yearP.element)
-    .appendChild(genreP.element)
-    .appendChild(directorP.element)
-    .appendChild(writerP.element)
-    .appendChild(imdbIdP.element);
+  moviePropertiesDiv.appendChildren(
+    movieH1.element,
+    saveButton.element,
+    movieDescriptionP.element,
+    ratingP.element,
+    yearP.element,
+    genreP.element,
+    directorP.element,
+    writerP.element,
+    imdbIdP.element
+  );
 
-  const movieDetailsDiv = new HtmlElement("div")
-    .appendChild(moviePosterImage.element)
-    .appendChild(moviePropertiesDiv.element)
-    .appendChild(youtubeIframe.element);
+  const movieDetailsDiv = new HtmlElement("div").appendChildren(
+    moviePosterImage.element,
+    moviePropertiesDiv.element,
+    youtubeIframe.element
+  );
 
   return movieDetailsDiv.element;
 }

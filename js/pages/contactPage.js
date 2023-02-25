@@ -7,7 +7,9 @@ export default function contactPage() {
 
 function createEvents() {
   const contactForm = document.querySelector("#contactForm");
-  const inputs = document.querySelectorAll(".form-control input");
+  const inputs = document.querySelectorAll(
+    ".form-control input, .form-control textarea"
+  );
 
   inputs.forEach((input) => {
     input.addEventListener("focus", (event) => {

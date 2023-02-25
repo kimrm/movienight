@@ -4,7 +4,6 @@ import movieDetails from "../components/movieDetails.js";
 
 export default function detailsPage(id) {
   displayMovie(id);
-  setSaveButtonClickEvent();
 }
 
 export function displayMovie(movieId) {
