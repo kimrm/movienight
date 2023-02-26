@@ -2,7 +2,10 @@ import { options, IMDB_API_URL } from "../config.js";
 import { showError, toggleLoader } from "../lib.js";
 import movieDetails from "../components/movieDetails.js";
 
+const detailsDivElement = document.querySelector(".movieDetails");
+
 export default function detailsPage(id) {
+  detailsDivElement.ariaBusy = true;
   displayMovie(id);
 }
 
@@ -15,9 +18,9 @@ export function displayMovie(movieId) {
 
 export function handleMovieDetailsData(data) {
   document.title = data.title;
-  const detailsDivElement = document.querySelector(".movieDetails");
   const item = movieDetails(data);
   detailsDivElement.appendChild(item);
   detailsDivElement.classList.toggle("hide");
   toggleLoader();
+  detailsDivElement.ariaBusy = false;
 }

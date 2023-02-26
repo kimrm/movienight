@@ -51,3 +51,8 @@ HtmlElement.prototype.setDataset = function (key, value) {
   this.element.dataset[key] = value;
   return this;
 };
+
+HtmlElement.prototype.setValue = function (value) {
+  this.element.value = value;
+  return this;
+};

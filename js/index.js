@@ -1,4 +1,3 @@
-import { setMenuEvents } from "./lib.js";
 import { PAGE_TITLE } from "./config.js";
 import detailsPage from "./pages/detailsPage.js";
 import indexPage from "./pages/indexPage.js";
@@ -13,8 +12,6 @@ const body = document.querySelector("body");
 title.textContent = PAGE_TITLE;
 
 body.appendChild(footer());
-
-setMenuEvents();
 
 /*  
 checking the url to see what page am I on
