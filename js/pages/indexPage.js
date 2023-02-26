@@ -5,7 +5,7 @@ import { favMovies } from "../components/savedMovies.js";
 import HtmlElement from "../components/htmlElement.js";
 
 const moviesUlElement = document.querySelector(".movieList");
-const pickRandomMovieButton = document.querySelector("#surpriseMeButton");
+const pickRandomMovieButton = document.querySelector("#movieSuggestionButton");
 const genreFormSelectElement = document.querySelector("#genreSelect");
 
 export default function indexPage() {
