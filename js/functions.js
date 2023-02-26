@@ -1,5 +1,9 @@
 import message from "./components/message.js";
 
+/*
+Collection of reusable functions that didn't fit anywhere else.
+*/
+
 export function toggleLoader() {
   const loader = document.querySelector(".loadingContainer");
   loader.classList.toggle("hide");

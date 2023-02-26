@@ -15,7 +15,8 @@ body.appendChild(footer());
 
 /*  
 checking the url to see what page am I on
-and run functions accordingly 
+and run functions accordingly. 
+I am doing this to avoid having use different js fils on each page. 
 */
 const url = document.URL.toLowerCase();
 switch (true) {

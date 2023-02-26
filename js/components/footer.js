@@ -9,7 +9,7 @@ function getYear() {
 export default function footer() {
   const linkElement = new htmlElement("a")
     .setHref("contact.html")
-    .setClasses("footer__link")
+    .setClasses("navigation_link")
     .setText("Contact us");
   const paragraphElement = new htmlElement("p").setText(
     `${PAGE_TITLE} © ${getYear()} Kim Rune Møller`

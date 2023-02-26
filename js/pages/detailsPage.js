@@ -1,11 +1,13 @@
 import { options, IMDB_API_URL } from "../config.js";
-import { showError, toggleLoader } from "../lib.js";
+import { showError, toggleLoader } from "../functions.js";
 import movieDetails from "../components/movieDetails.js";
 
 const detailsDivElement = document.querySelector(".movieDetails");
 
 export default function detailsPage(id) {
+  // tell screen readers that the list is loading
   detailsDivElement.ariaBusy = true;
+
   displayMovie(id);
 }
 

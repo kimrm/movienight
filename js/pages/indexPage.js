@@ -1,5 +1,5 @@
 import { options, IMDB_API_URL } from "../config.js";
-import { showError, toggleLoader } from "../lib.js";
+import { showError, toggleLoader } from "../functions.js";
 import movieCard from "../components/movieCard.js";
 import { favMovies } from "../components/savedMovies.js";
 import HtmlElement from "../components/htmlElement.js";
@@ -9,7 +9,9 @@ const pickRandomMovieButton = document.querySelector("#movieSuggestionButton");
 const genreFormSelectElement = document.querySelector("#genreSelect");
 
 export default function indexPage() {
+  // tell screen readers that the list is loading
   moviesUlElement.ariaBusy = true;
+
   placeGenreSelect();
   listMovies();
   const tabSavedList = document.querySelector("#tabSavedList");
@@ -20,7 +22,9 @@ export default function indexPage() {
     listSavedMovies();
   });
   tabTopList.addEventListener("click", (event) => {
+    // tell screen readers that the list is loading
     moviesUlElement.ariaBusy = true;
+
     tabSavedList.classList.add("inactive");
     tabTopList.classList.remove("inactive");
     listMovies();

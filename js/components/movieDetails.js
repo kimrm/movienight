@@ -1,8 +1,12 @@
-import { favMovies, saveToList } from "./savedMovies.js";
+import { favMovies, saveOrRemoveFromList } from "./savedMovies.js";
 import HtmlElement from "./htmlElement.js";
 
-// This function is used to create the movie details html using method chaining
-// ref. https://www.geeksforgeeks.org/method-chaining-in-javascript/
+const saveText = "Save to your list";
+const addedSaveText = "Added to your list";
+
+// This function is used to create the movie details html using the custom
+// htmlElement function/object and method chaining
+// ref/inspiration. https://www.geeksforgeeks.org/method-chaining-in-javascript/
 export default function Movie(movie) {
   const moviePosterImage = new HtmlElement("img")
     .setClasses("moviePoster")
@@ -20,8 +24,8 @@ export default function Movie(movie) {
   );
   const buttonTextSpan = new HtmlElement("span").setText(
     favMovies().find((favMovie) => favMovie.imdbid === movie.imdbid)
-      ? "In your list"
-      : "Save to your list"
+      ? addedSaveText
+      : saveText
   );
 
   const saveButton = new HtmlElement("button")
@@ -29,12 +33,12 @@ export default function Movie(movie) {
     .appendChild(fontAwesomeI.element)
     .appendChild(buttonTextSpan.element)
     .setEventListener("click", (event) => {
-      if (saveToList(movie)) {
+      if (saveOrRemoveFromList(movie)) {
         const textSpan = event.target.querySelector("span");
-        textSpan.textContent = "Save to list";
+        textSpan.textContent = addedSaveText;
       } else {
         const textSpan = event.target.querySelector("span");
-        textSpan.textContent = "In your list";
+        textSpan.textContent = saveText;
       }
       const fontAwesome = event.target.children[0];
       const buttonText = event.target.children[1];
@@ -63,21 +67,21 @@ export default function Movie(movie) {
     .setClasses("regular-text")
     .setText(movie.genre.join(", "));
   const genreP = new HtmlElement("p")
-    .setClasses("movieDescription", "subtle-text")
+    .setClasses("subtle-text")
     .setText("Genre ")
     .appendChild(genreSpan.element);
   const directorSpan = new HtmlElement("span")
     .setClasses("regular-text")
     .setText(movie.director.join(", "));
   const directorP = new HtmlElement("p")
-    .setClasses("movieDescription", "subtle-text")
+    .setClasses("subtle-text")
     .setText("Director ")
     .appendChild(directorSpan.element);
   const writerSpan = new HtmlElement("span")
     .setClasses("regular-text")
     .setText(movie.writers.join(", "));
   const writerP = new HtmlElement("p")
-    .setClasses("movieDescription", "subtle-text")
+    .setClasses("subtle-text")
     .setText("Writer ")
     .appendChild(writerSpan.element);
   const imbdIdSpan = new HtmlElement("span")

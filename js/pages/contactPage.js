@@ -9,9 +9,14 @@ const nameErrorMsg = document.querySelector(".validate-error.name");
 const emailErrorMsg = document.querySelector(".validate-error.email");
 const subjectErrorMsg = document.querySelector(".validate-error.subject");
 const addressErrorMsg = document.querySelector(".validate-error.address");
+const contactForm = document.querySelector("#contactForm");
+const inputs = document.querySelectorAll(
+  ".form-control input, .form-control textarea"
+);
+const validateErrors = document.querySelectorAll(".validate-error");
 
 export default function contactPage() {
-  createEvents();
+  addEventListeners();
 }
 
 function checkEmail(email) {
@@ -24,8 +29,20 @@ function checkLength(text, minLength) {
   return text.length >= minLength;
 }
 
-function validateInput(input) {
-  switch (input.name) {
+function clearForm() {
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+
+  validateErrors.forEach((element) => {
+    element.textContent = "";
+  });
+}
+
+// validate the input when input/textarea
+// sets a variable for each input to check if it's valid when submitting the form
+function validateInput(event) {
+  switch (event.target.name) {
     case "input_name":
       nameIsValid = checkLength(event.target.value, 1);
       if (!nameIsValid) {
@@ -60,37 +77,31 @@ function validateInput(input) {
   }
 }
 
-function createEvents() {
-  const contactForm = document.querySelector("#contactForm");
-  const inputs = document.querySelectorAll(
-    ".form-control input, .form-control textarea"
-  );
-
+function addEventListeners() {
   inputs.forEach((input) => {
     input.addEventListener("focus", (event) => {
       event.target.labels.forEach((label) => {
         label.classList.toggle("focus");
       });
     });
+
+    // validate the input when input/textarea lose focus
     input.addEventListener("blur", (event) => {
       event.target.labels.forEach((label) => {
         label.classList.toggle("focus");
       });
-      validateInput(event.target);
+      validateInput(event);
     });
   });
 
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    document.querySelectorAll(".validate-error").forEach((element) => {
-      element.textContent = "";
-    });
+    // clears success/error message
+    messageContainer.innerHTML = "";
 
     let hasErrors =
       !nameIsValid || !emailIsValid || !subjectIsValid || !addressIsValid;
-
-    messageContainer.innerHTML = "";
 
     if (!messageContainer.classList.contains("show")) {
       messageContainer.classList.add("show");
@@ -110,11 +121,7 @@ function createEvents() {
           "Thank you! Your message has been sent."
         )
       );
-      document
-        .querySelectorAll(".form-control input, .form-control textarea")
-        .forEach((input) => {
-          input.value = "";
-        });
+      clearForm();
     }
   });
 }

@@ -54,8 +54,7 @@ a {
   margin-top: 2rem;
 }
 
-.footer__link,
-.home-link {
+.navigation_link {
   line-height: 3rem;
   color: #000;
   text-decoration: none;
@@ -65,10 +64,13 @@ a {
   border-radius: 5px;
 }
 
-.footer__link:hover,
-.home-link:hover {
+.navigation_link:hover {
   border-color: var(--secondary-button-color-darker);
   color: var(--secondary-button-color-darker);
+}
+
+.home {
+  border: none;
 }
 
 a.logo {
@@ -229,8 +231,8 @@ header {
   text-align: center;
 }
 
-.loadingContainer span {
-  color: rgb(127, 127, 127);
+.loadingContainer p {
+  color: var(--black);
 }
 
 .loader {
@@ -317,6 +319,7 @@ header {
 .movieDescription {
   max-width: 600px;
   line-height: 1.5rem;
+  margin: 2rem 0;
 }
 
 .youtube {
