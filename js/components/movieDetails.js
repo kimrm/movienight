@@ -29,12 +29,17 @@ export default function Movie(movie) {
     .appendChild(fontAwesomeI.element)
     .appendChild(buttonTextSpan.element)
     .setEventListener("click", (event) => {
-      saveToList(movie);
+      if (saveToList(movie)) {
+        const textSpan = event.target.querySelector("span");
+        textSpan.textContent = "Save to list";
+      } else {
+        const textSpan = event.target.querySelector("span");
+        textSpan.textContent = "In your list";
+      }
       const fontAwesome = event.target.children[0];
       const buttonText = event.target.children[1];
       fontAwesome.classList.toggle("fa-regular");
       fontAwesome.classList.toggle("fa-solid");
-      buttonText.textContent = "In your list";
     });
 
   const movieDescriptionP = new HtmlElement("p")

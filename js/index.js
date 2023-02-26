@@ -12,7 +12,7 @@ const body = document.querySelector("body");
 
 title.textContent = PAGE_TITLE;
 
-body.innerHTML += footer();
+body.appendChild(footer());
 
 setMenuEvents();
 

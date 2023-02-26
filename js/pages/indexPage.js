@@ -4,6 +4,7 @@ import movieCard from "../components/movieCard.js";
 import { favMovies } from "../components/savedMovies.js";
 
 export default function indexPage() {
+  placeGenreSelect();
   listMovies();
   const tabSavedList = document.querySelector("#tabSavedList");
   const tabTopList = document.querySelector("#tabTopList");
@@ -18,6 +19,29 @@ export default function indexPage() {
     listMovies();
   });
 }
+
+function placeGenreSelect() {
+  const genreSelect = document.querySelector(".genre-select-controller");
+  const genreSelectContainer = document.querySelector(
+    ".controllers-small-screen"
+  );
+  const controllers = document.querySelector(".controllers");
+  if (window.innerWidth < 600) {
+    if (!genreSelectContainer.contains(genreSelect)) {
+      genreSelectContainer.appendChild(genreSelect);
+      genreSelectContainer.classList.add("p-1");
+    }
+  } else {
+    if (!controllers.contains(genreSelect)) {
+      controllers.appendChild(genreSelect);
+      genreSelectContainer.classList.remove("p-1");
+    }
+  }
+}
+
+window.addEventListener("resize", function (event) {
+  placeGenreSelect();
+});
 
 function listSavedMovies() {
   const moviesUlElement = document.querySelector(".movieList");

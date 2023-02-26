@@ -1,3 +1,8 @@
+// This module is used to create html elements using method chaining
+// if the methods return the object itself, it is possible to chain them
+// together. This makes the code more readable and easier to maintain.
+// ref. https://www.geeksforgeeks.org/method-chaining-in-javascript/
+
 export default function HtmlElement(type) {
   this.element = document.createElement(type);
 }

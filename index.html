@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Find movie suggestions from the IMDb Top List"
+      content="Movie List, Find movie suggestions from the IMDb Top List"
     />
-    <title>IMDb Topp 100 List</title>
+    <title>Movie List</title>
     <script
       src="https://kit.fontawesome.com/33714fa395.js"
       crossorigin="anonymous"
@@ -64,30 +64,34 @@
         </ul>
       </nav>
     </header>
-    <main class="container">
-      <div class="controllers">
-        <div class="genre-select-controller">
-          <select name="genre" id="genreSelect" class="genre-select">
-            <option value="All">All genres</option>
-          </select>
-          <button id="surpriseMeButton" class="genre-select-button">
-            Find movie!
-          </button>
+    <main>
+      <div class="controllers-small-screen bg-grey container"></div>
+      <div class="container">
+        <div class="movieList-container">
+          <div class="controllers">
+            <div class="tabs">
+              <button id="tabTopList" class="tab-top-list">Top List</button>
+              <button id="tabSavedList" class="tab-saved-list inactive">
+                Saved movies
+              </button>
+            </div>
+            <div class="genre-select-controller">
+              <select name="genre" id="genreSelect" class="genre-select">
+                <option value="All">All genres</option>
+              </select>
+              <button id="surpriseMeButton" class="genre-select-button">
+                Find movie!
+              </button>
+            </div>
+          </div>
+
+          <div class="loadingContainer hide">
+            <div class="loader"></div>
+            <p>Loading movies</p>
+          </div>
+          <div class="message-container"></div>
+          <ul class="movieList"></ul>
         </div>
-      </div>
-      <div class="message-container"></div>
-      <div class="movieList-container">
-        <div class="tabs">
-          <button id="tabTopList" class="tab-top-list">Top List</button>
-          <button id="tabSavedList" class="tab-saved-list inactive">
-            Saved movies
-          </button>
-        </div>
-        <div class="loadingContainer hide">
-          <div class="loader"></div>
-          <p>Loading movies</p>
-        </div>
-        <ul class="movieList"></ul>
       </div>
     </main>
   </body>

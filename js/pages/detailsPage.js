@@ -18,5 +18,6 @@ export function handleMovieDetailsData(data) {
   const detailsDivElement = document.querySelector(".movieDetails");
   const item = movieDetails(data);
   detailsDivElement.appendChild(item);
+  detailsDivElement.classList.toggle("hide");
   toggleLoader();
 }

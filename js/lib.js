@@ -52,18 +52,11 @@ export function watchListMovies() {
 }
 
 export function showError(err) {
-  console.log("Error: ", err);
   const messageContainer = document.querySelector(".message-container");
   const errorMessage = message(
     "error",
     "An error occurred while calling the API."
   );
-  messageContainer.innerHTML = errorMessage;
+  messageContainer.appendChild(errorMessage);
   toggleLoader();
-}
-
-export function validateEmail(email) {
-  const regEx = /\S+@\S+\.\S+/;
-  const patternMatches = regEx.test(email);
-  return patternMatches;
 }

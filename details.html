@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Movie List, Find movie suggestions from the IMDb Top List"
+    />
     <title>Loading movie details...</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,12 +45,15 @@
       </p>
     </header>
     <div class="container">
+      <a href="index.html" title="Go back to home page" class="home-link"
+        ><i class="fa-regular fa-circle-left"></i> Back to movie list</a
+      >
       <div class="loadingContainer">
         <div class="loader"></div>
         <span>Loading movie details...</span>
       </div>
       <div class="message-container"></div>
-      <div class="movieDetails"></div>
+      <div class="movieDetails hide"></div>
     </div>
   </body>
 </html>

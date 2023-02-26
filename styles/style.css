@@ -10,12 +10,15 @@
   --primary-color-dark: #51a4df;
   --primary-button-color: #7a88c0;
   --primary-button-color-darker: #1752c6;
+  --secondary-button-color: #1752c6;
+  --secondary-button-color-darker: #0b2761;
   --menu-link: #e9e0fb;
   --menu-link-hover: #7f798a;
   --dark-shade: #51a4df;
   --text-subtle: #454444;
   --background-color: #e2ebee;
   --background-color-darker: #d4dcdf;
+  --light-shade: #fcf9f5;
 }
 
 *,
@@ -36,22 +39,34 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .footer {
   width: 100%;
   opacity: 0.9;
   bottom: 0;
   background-color: #faf5f6;
-  padding: 1rem;
+  padding: 2rem 1rem;
   margin-top: 2rem;
 }
 
-a {
-  color: navy;
+.footer__link,
+.home-link {
+  line-height: 3rem;
+  color: #000;
   text-decoration: none;
+  border: solid 1px var(--secondary-button-color);
+  padding: 0.5rem 1rem;
+  color: var(--secondary-button-color);
+  border-radius: 5px;
 }
 
-a:visited {
-  color: navy;
+.footer__link:hover,
+.home-link:hover {
+  border-color: var(--secondary-button-color-darker);
+  color: var(--secondary-button-color-darker);
 }
 
 a.logo {
@@ -90,6 +105,10 @@ p {
 
 .movie h2 {
   text-align: center;
+}
+
+.message-container {
+  margin: 2rem 0;
 }
 
 /* 
@@ -245,7 +264,7 @@ header {
 
 .pageDescription {
   color: var(--text-subtle);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 70%;
 }
 
@@ -265,7 +284,7 @@ header {
 
 .movieList {
   display: block;
-  gap: 1rem;
+  gap: 2rem;
   height: 100%;
 }
 
@@ -280,7 +299,6 @@ header {
   color: #000;
   position: relative;
   min-height: 600px;
-  margin-bottom: 1rem;
   transition: all 500ms ease-out;
   padding-bottom: 1rem;
 }
@@ -412,6 +430,7 @@ header {
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
+  padding-bottom: 4rem;
 }
 
 .movieProperties {
@@ -448,14 +467,18 @@ header {
 }
 
 .save-button {
+  appearance: none;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1rem;
   border: none;
   background-color: transparent;
-  color: var(--primary-button-color);
+  color: var(--secondary-button-color);
   cursor: pointer;
 }
 
 .save-button:hover {
-  color: rgb(1, 52, 1);
+  color: var(--secondary-button-color-darker);
 }
 
 .form-container {
@@ -565,13 +588,11 @@ header {
 .controllers {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0;
 }
 
 .tabs {
   display: flex;
-  margin-bottom: 1rem;
+  align-items: baseline;
 }
 
 .tab-top-list,
@@ -609,6 +630,19 @@ header {
 .genre-select-controller {
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.p-1 {
+  padding: 1rem 1rem;
+}
+
+.bg-grey {
+  background-color: var(--background-color-darker);
 }
 
 .genre-select {
@@ -673,24 +707,15 @@ header {
   .youtube {
     height: 450px;
   }
-  /* h1 {
-    font-size: 3rem;
-  } */
   .form {
     width: 50%;
   }
-  /* a.logo {
-    font-size: 3rem;
-  } */
 }
 
 @media screen and (min-width: 600px) {
   .movieList-container {
     padding: 1rem;
   }
-  /* h1 {
-    font-size: 2.5rem;
-  } */
 }
 
 @media screen and (min-width: 500px) {
