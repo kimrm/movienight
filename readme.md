@@ -46,5 +46,5 @@ As this is a student project contributions are not requested.
 
 ## License
 
-No license required. Project is free to clone for example og educational purposes.
+No license required. Project is free to clone for example or educational purposes.
 
